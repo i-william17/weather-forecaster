@@ -18,7 +18,7 @@ class WeatherController extends Controller
         }
 
         try {
-            // Optional: Cache results for 10 minutes
+            
             $cacheKey = 'weather_' . strtolower($city);
             $data = Cache::remember($cacheKey, now()->addMinutes(10), function () use ($city, $apiKey) {
                 $response = Http::get('https://api.openweathermap.org/data/2.5/weather', [

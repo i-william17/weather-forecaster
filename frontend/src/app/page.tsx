@@ -83,6 +83,7 @@ export default function Home() {
       
       <footer className="mt-12 text-center text-gray-600 text-sm">
         <p>© {new Date().getFullYear()} Weather App. All rights reserved.</p>
+        {weather && <WeatherCard data={weather} />}
       </footer>
     </div>
   );
