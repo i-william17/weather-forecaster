@@ -25,18 +25,21 @@ export default function Home() {
   };
 
   // Dynamic background based on weather conditions
-  const getBackgroundClass = () => {
-    if (!weather) return 'bg-gradient-to-br from-blue-50 to-indigo-100';
-    
-    const mainWeather = weather.weather[0].main.toLowerCase();
-    
-    if (mainWeather.includes('rain')) return 'bg-gradient-to-br from-gray-400 to-blue-900';
-    if (mainWeather.includes('cloud')) return 'bg-gradient-to-br from-gray-200 to-gray-400';
-    if (mainWeather.includes('clear')) return 'bg-gradient-to-br from-blue-400 to-cyan-100';
-    if (mainWeather.includes('snow')) return 'bg-gradient-to-br from-blue-100 to-white';
-    
+const getBackgroundClass = () => {
+  if (!weather || !weather.weather || !weather.weather[0]) {
     return 'bg-gradient-to-br from-blue-50 to-indigo-100';
-  };
+  }
+
+  const mainWeather = weather.weather[0]?.main.toLowerCase();
+
+  if (mainWeather?.includes('rain')) return 'bg-gradient-to-br from-gray-400 to-blue-900';
+  if (mainWeather?.includes('cloud')) return 'bg-gradient-to-br from-gray-200 to-gray-400';
+  if (mainWeather?.includes('clear')) return 'bg-gradient-to-br from-blue-400 to-cyan-100';
+  if (mainWeather?.includes('snow')) return 'bg-gradient-to-br from-blue-100 to-white';
+
+  return 'bg-gradient-to-br from-blue-50 to-indigo-100';
+};
+
 
   return (
     <div className={`min-h-screen py-12 px-4 transition-all duration-500 ${getBackgroundClass()}`}>
@@ -83,7 +86,6 @@ export default function Home() {
       
       <footer className="mt-12 text-center text-gray-600 text-sm">
         <p>© {new Date().getFullYear()} Weather App. All rights reserved.</p>
-        {weather && <WeatherCard data={weather} />}
       </footer>
     </div>
   );

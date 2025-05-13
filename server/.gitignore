@@ -1,0 +1,38 @@
+# Node modules
+node_modules/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# dotenv environment variables
+.env
+.env.*.local
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Build / compiled files
+dist/
+build/
+
+# Debugging and cache
+*.tgz
+.cache/
+.nyc_output/
+coverage/
+
+# IDE settings
+.vscode/
+.idea/
+
+# Optional npm/yarn files
+package-lock.json
+yarn.lock
+
+# Optional: test snapshots
+__snapshots__/
